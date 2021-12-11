@@ -8,13 +8,13 @@
     "/api/v1/balance/validate": {
       "post": {
         "summary": "",
-        "tags": [
-          "Balanced Smiles"
-        ],
+        "tags": ["Balanced Smiles"],
         "parameters": [],
-        "security": [{
-          "ApiKeyAuth": []
-        }],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "success",
@@ -71,7 +71,6 @@
             "type": "string"
           }
         }
-
       },
       "words": {
         "type": "object",
@@ -83,41 +82,81 @@
             }
           }
         },
-        "required": [
-          "list"
-        ]
+        "example": {
+          "list": [
+            {
+              "word": "hola"
+            },
+            {
+              "word": "(hola)"
+            },
+            {
+              "word": "(()"
+            },
+            {
+              "word": "())"
+            },
+            {
+              "word": "(hola))"
+            },
+            {
+              "word": "(:)"
+            },
+            {
+              "word": "(hola:)"
+            },
+            {
+              "word": ":(hola)"
+            },
+            {
+              "word": ":(hola:)"
+            },
+            {
+              "word": "no voy (:()"
+            },
+            {
+              "word": "hoy pm: fiesta :):)"
+            },
+            {
+              "word": ":(("
+            },
+            {
+              "word": "a (b (c (d) c) b) a :)"
+            }
+          ]
+        },
+        "required": ["list"]
       },
-       "wordStatus": {
-         "type": "object",
-         "properties": {
-           "word": {
-             "type": "string"
-           },
-           "status": {
-             "type": "string"
-           }
-         }
-
-       },
-       "wordsStatuses": {
-         "type": "object",
-         "properties": {
-           "list": {
-             "type": "array",
-             "items": {
-               "$ref": "#/components/schemas/wordStatus"
-             }
-           }
-         },
-         "required": [
-           "list"
-         ]
-       }
+      "wordStatus": {
+        "type": "object",
+        "properties": {
+          "word": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "wordsStatuses": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/wordStatus"
+            }
+          }
+        },
+        "required": ["list"]
+      }
     }
   },
-  "security": [{
-    "bearerAuth": [],
-    "ApiKeyAuth": [],
-    "basicAuth": []
-  }]
+  "security": [
+    {
+      "bearerAuth": [],
+      "ApiKeyAuth": [],
+      "basicAuth": []
+    }
+  ]
 }
