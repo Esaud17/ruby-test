@@ -1,0 +1,123 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Balance API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/balance/validate": {
+      "post": {
+        "summary": "",
+        "tags": [
+          "Balanced Smiles"
+        ],
+        "parameters": [],
+        "security": [{
+          "ApiKeyAuth": []
+        }],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/wordStatus"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "invalid",
+            "content": {}
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/words"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      },
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "name": "x-api-key",
+        "in": "query"
+      }
+    },
+    "schemas": {
+      "word": {
+        "type": "object",
+        "properties": {
+          "word": {
+            "type": "string"
+          }
+        }
+
+      },
+      "words": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/word"
+            }
+          }
+        },
+        "required": [
+          "list"
+        ]
+      },
+       "wordStatus": {
+         "type": "object",
+         "properties": {
+           "word": {
+             "type": "string"
+           },
+           "status": {
+             "type": "string"
+           }
+         }
+
+       },
+       "wordsStatuses": {
+         "type": "object",
+         "properties": {
+           "list": {
+             "type": "array",
+             "items": {
+               "$ref": "#/components/schemas/wordStatus"
+             }
+           }
+         },
+         "required": [
+           "list"
+         ]
+       }
+    }
+  },
+  "security": [{
+    "bearerAuth": [],
+    "ApiKeyAuth": [],
+    "basicAuth": []
+  }]
+}
