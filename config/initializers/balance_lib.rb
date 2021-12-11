@@ -1,1 +1,1 @@
-#Balance = Balance::BalanceLogic.new
+Balance = Balance::BalanceLogic.new
