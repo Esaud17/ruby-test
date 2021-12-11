@@ -17,15 +17,15 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
-  username: pgsqlapp
-  password: pgsqlapp1
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
+  host: localhost
+  username: pgsqlapp
+  password: pgsqlapp1
   database: balancedApi_development
 
   # The specified database role being used to connect to postgres.
@@ -60,6 +60,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  host: localhost
+  username: pgsqlapp
+  password: pgsqlapp1
   database: balancedApi_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -84,6 +87,4 @@ test:
 #
 production:
   <<: *default
-  database: balancedApi_production
-  username: balancedApi
-  password: <%= ENV['BALANCEDAPI_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
