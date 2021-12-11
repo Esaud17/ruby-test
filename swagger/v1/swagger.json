@@ -59,8 +59,8 @@
       },
       "ApiKeyAuth": {
         "type": "apiKey",
-        "name": "x-api-key",
-        "in": "query"
+        "name": "HTTP-X-API-KEY",
+        "in": "header"
       }
     },
     "schemas": {
