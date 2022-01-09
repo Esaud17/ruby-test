@@ -35,9 +35,10 @@ module Balance
 
             diffpair = (openpair - closepair).abs
             emoji = openpair > closepair ? ":(" : ":)"
+            emojiremplace = openpair > closepair ? "{" : "}"
 
             while diffpair > 0
-                inputString = inputString.sub(emoji,'')
+                inputString = inputString.sub(emoji,emojiremplace)
                 diffpair -= 1
             end
 
