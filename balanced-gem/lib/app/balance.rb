@@ -42,7 +42,7 @@ module Balance
             emoji = initOrderPair ? ":(" : ":)"
             while diffpair < 0
                 inputString = inputString.sub(emoji,'')
-                diffpair--;
+                diffpair--
             end
 
             return inputString
