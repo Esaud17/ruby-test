@@ -21,7 +21,7 @@ module Balance
             return container.count.zero? 
         end
 
-        def isEmojiIdentifier(inputString)
+        def isEmojiIdentifier(inputString,reverse=false)
             openpair = 0
             closepair = 0 
 
@@ -38,7 +38,15 @@ module Balance
             emojiremplace = openpair > closepair ? "{" : "}"
 
             while diffpair > 0
-                inputString = inputString.sub(emoji,emojiremplace)
+                if reverse 
+                    inputString = inputString.reverse
+                    emoji = emoji.reverse
+                    inputString = inputString.sub(emoji,emojiremplace)
+                    inputString = inputString.reverse
+                else
+                    inputString = inputString.sub(emoji,emojiremplace)
+                end
+
                 diffpair -= 1
             end
 
@@ -51,6 +59,11 @@ module Balance
 
             if !result
                 outputstring = isEmojiIdentifier(inputString)
+                result = isBalanced(outputstring)
+            end
+
+             if !result
+                outputstring = isEmojiIdentifier(inputString,true)
                 result = isBalanced(outputstring)
             end
 
@@ -68,3 +81,5 @@ module Balance
 
     end
 end
+
+:(:(:())) :(
