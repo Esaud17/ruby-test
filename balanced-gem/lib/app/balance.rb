@@ -81,5 +81,3 @@ module Balance
 
     end
 end
-
-:(:(:())) :(
