@@ -24,25 +24,21 @@ module Balance
         def isEmojiIdentifier(inputString)
             openpair = 0
             closepair = 0 
-            initOrderPair = true
 
             inputString.chars.each do |character|
                 if character == "("
-                    openpair++
+                    openpair += 1
                 elsif character == ")"
-                    closepair++
+                    closepair+= 1
                 end
             end 
 
             diffpair = (openpair - closepair).abs
-            if openpair < closepair
-                initOrderPair = false
-            end
+            emoji = openpair > closepair ? ":(" : ":)"
 
-            emoji = initOrderPair ? ":(" : ":)"
-            while diffpair < 0
+            while diffpair > 0
                 inputString = inputString.sub(emoji,'')
-                diffpair--
+                diffpair -= 1
             end
 
             return inputString
@@ -71,8 +67,3 @@ module Balance
 
     end
 end
-
-
-:(:(:())
-
-:(:()):)

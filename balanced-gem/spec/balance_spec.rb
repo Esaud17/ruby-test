@@ -65,6 +65,16 @@ RSpec.describe Balance do
     expect(balance.validate(":((")).to eq(false)
   end
 
+  it ":(:(:()) -> balanceado" do
+    balance = Balance::BalanceLogic.new
+    expect(balance.validate(":(:(:())")).to eq(true)
+  end
+
+  it ":(:()):) -> balanceado" do
+    balance = Balance::BalanceLogic.new
+    expect(balance.validate(":(:()):)")).to eq(true)
+  end
+
   it "a (b (c (d) c) b) a :) -> balanceado " do
     balance = Balance::BalanceLogic.new
     expect(balance.validate("a (b (c (d) c) b) a :)")).to eq(true)
